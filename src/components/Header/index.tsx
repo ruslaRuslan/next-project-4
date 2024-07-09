@@ -19,13 +19,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import { Container } from "@mui/material";
-import HeaderLeft from "@/components/HeaderLeft";
+
 const drawerWidth = 240;
 const navItems = [
   {
     id: 0,
     title: "Shop",
-    href: "#draw",
+    href: "/",
   },
   {
     id: 1,
@@ -55,7 +55,7 @@ function DrawerAppBar(props: any) {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
 
   const handleSearchClick = () => {
-    setIsSearchOpen(!isSearchOpen); // Toggle search field visibility
+    setIsSearchOpen(!isSearchOpen);
   };
 
   const toggleDisplay = () => {
@@ -66,26 +66,10 @@ function DrawerAppBar(props: any) {
     }
   };
 
-  const [open, setOpen] = React.useState(false);
-  const [count, setCount] = React.useState(1);
-  const [size, setSize] = React.useState("");
-  // ////////////////
-
-  const handleOpenDrawer = () => {
-    setOpen(true);
-  };
-
-  const handleCloseDrawer = () => {
-    setOpen(false);
-  };
-
-  const isActive2 = () => open;
-  // ////////////////
-
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2, color: "#fff" }}>
-        APPLICATION
+      <Typography variant="h6" sx={{ my: 2 }}>
+        EARRINGS
       </Typography>
       <Divider />
       <List>
@@ -95,17 +79,19 @@ function DrawerAppBar(props: any) {
             disablePadding
             onClick={() => handleNavItemClick(href)}
             sx={{
-              backgroundColor: isActive(href) ? "blue" : "inherit",
+              borderBottom: isActive(href) ? "#000" : "green",
               "&:hover": {
-                backgroundColor: isActive(href) ? "blue" : "#f0f0f0",
+                borderBottom: isActive(href) ? "blue" : "green",
               },
             }}
           >
             <Link
               style={{
-                color: isActive(href) ? "#fff" : "#FFA500",
+                color: isActive(href) ? "#red" : "#000",
                 textDecoration: "none",
                 textTransform: "none",
+                fontSize: 24,
+                fontWeight: 500,
               }}
               href={href}
               passHref
@@ -137,15 +123,6 @@ function DrawerAppBar(props: any) {
                 alignItems: "center",
               }}
             >
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { sm: "none" } }}
-              >
-                <MenuIcon style={{ color: "#000" }} />
-              </IconButton>
               <Typography
                 sx={{
                   flexGrow: 1,
@@ -163,40 +140,6 @@ function DrawerAppBar(props: any) {
                 </span>
                 HOPPE
               </Typography>
-              {/* <HeaderLeft /> */}
-
-              {/* <Link
-                href="#"
-                style={{
-                  color: "#000",
-                  textDecoration: "none",
-                  textTransform: "none",
-                  paddingLeft: "12px",
-                  paddingRight: "12px",
-                  borderBottom: isActive2()
-                    ? "1px solid #000"
-                    : "1px solid transparent",
-                  padding: "5px 15px",
-                }}
-                onClick={handleOpenDrawer}
-              >
-                Shop
-              </Link> */}
-
-              <Drawer
-                id="#draw"
-                anchor="left"
-                open={open}
-                onClose={handleCloseDrawer}
-              >
-                <Box sx={{ width: 400 }} role="presentation">
-                  <List>512541</List>
-                  <List>512541</List>
-                  <List>512541</List>
-                  <List>512541</List>
-                  <List>512541</List>
-                </Box>
-              </Drawer>
 
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 {navItems.map(({ href, title, id }) => (
@@ -275,12 +218,33 @@ function DrawerAppBar(props: any) {
                     }}
                   />
                 </IconButton>
-
-                <IconButton color="inherit" aria-label="basket">
-                  <ShoppingCartOutlinedIcon />
-                </IconButton>
-
-                <IconButton color="inherit" aria-label="basket">
+                <Box
+                  sx={{
+                    display: "flex",
+                  }}
+                >
+                  <IconButton color="inherit" aria-label="basket">
+                    <ShoppingCartOutlinedIcon />
+                  </IconButton>
+                  <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="start"
+                    onClick={handleDrawerToggle}
+                    sx={{ mr: 2, display: { sm: "none" } }}
+                  >
+                    <MenuIcon style={{ color: "#000" }} />
+                  </IconButton>
+                </Box>
+                <IconButton
+                  color="inherit"
+                  aria-label="basket"
+                  sx={{
+                    "@media screen and (max-width: 599px)": {
+                      display: "none",
+                    },
+                  }}
+                >
                   <PersonOutlineOutlinedIcon />
                 </IconButton>
               </Box>
@@ -300,8 +264,8 @@ function DrawerAppBar(props: any) {
               display: { xs: "block", sm: "none" },
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
-                width: drawerWidth,
-                bgcolor: "grey",
+                width: "100%",
+                height: 200,
               },
             }}
           >
@@ -323,6 +287,9 @@ function DrawerAppBar(props: any) {
         }}
       >
         <TextField
+          sx={{
+            marginBottom: 4,
+          }}
           fullWidth
           label={
             <>

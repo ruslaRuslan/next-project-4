@@ -10,6 +10,7 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
@@ -136,7 +137,13 @@ const HomeComponent = () => {
           </Select>
         </Box>
       </Box>
-      <Grid container spacing={4} justifyContent="end">
+      <Stack
+        flexDirection={"row"}
+        sx={{
+          flexDirection: { xs: "column", md: "row" },
+          gap: 2,
+        }}
+      >
         <Grid item xs={12} sm={4} md={3} lg={3}>
           <Card
             sx={{
@@ -155,109 +162,104 @@ const HomeComponent = () => {
             />
           </Card>
         </Grid>
-        {earrings.map(({ id, img, title, price }) => {
-          return (
-            <Grid
-              item
-              xs={12}
-              sm={4}
-              md={3}
-              lg={3}
-              sx={{ justifyItems: "end" }}
-            >
-              <Box
-                key={id}
-                sx={{
-                  marginTop: 1,
-                }}
-              >
+        <Grid container spacing={4} justifyContent="center">
+          {earrings.map(({ id, img, title, price }) => {
+            return (
+              <Grid item xs={12} sm={6} md={4} lg={4}>
                 <Box
+                  key={id}
                   sx={{
-                    position: "relative",
-                    "&:hover button": {
-                      opacity: 1,
-                    },
+                    marginTop: 1,
                   }}
                 >
-                  <CardMedia
+                  <Box
                     sx={{
-                      height: 300,
                       position: "relative",
-                    }}
-                    image={img}
-                  />
-                  <IconButton
-                    color="inherit"
-                    aria-label="basket"
-                    sx={{
-                      position: "absolute",
-                      top: "50%",
-                      left: "5rem",
-                      opacity: 0,
-                      transition: "opacity 0.3s ease",
+                      "&:hover button": {
+                        opacity: 1,
+                      },
                     }}
                   >
-                    <ShoppingCartOutlinedIcon />
-                  </IconButton>
-
-                  <IconButton
-                    color="inherit"
-                    aria-label="basket"
-                    sx={{
-                      position: "absolute",
-                      top: "50%",
-                      left: "8rem",
-                      opacity: 0,
-                      transition: "opacity 0.3s ease",
-                    }}
-                  >
-                    <VisibilityOutlinedIcon />
-                  </IconButton>
-
-                  <IconButton
-                    color="inherit"
-                    aria-label="basket"
-                    sx={{
-                      position: "absolute",
-                      top: "50%",
-                      left: "11rem",
-                      opacity: 0,
-                      transition: "opacity 0.3s ease",
-                    }}
-                  >
-                    <Checkbox
+                    <CardMedia
                       sx={{
-                        bottom: 9,
+                        height: 300,
+                        position: "relative",
                       }}
-                      {...label}
-                      icon={<FavoriteBorder />}
-                      checkedIcon={<Favorite />}
+                      image={img}
                     />
-                  </IconButton>
+                    <IconButton
+                      color="inherit"
+                      aria-label="basket"
+                      sx={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "5rem",
+                        opacity: 0,
+                        transition: "opacity 0.3s ease",
+                      }}
+                    >
+                      <ShoppingCartOutlinedIcon />
+                    </IconButton>
+
+                    <IconButton
+                      color="inherit"
+                      aria-label="basket"
+                      sx={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "8rem",
+                        opacity: 0,
+                        transition: "opacity 0.3s ease",
+                      }}
+                    >
+                      <VisibilityOutlinedIcon />
+                    </IconButton>
+
+                    <IconButton
+                      color="inherit"
+                      aria-label="basket"
+                      sx={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "11rem",
+                        opacity: 0,
+                        transition: "opacity 0.3s ease",
+                      }}
+                    >
+                      <Checkbox
+                        sx={{
+                          bottom: 9,
+                        }}
+                        {...label}
+                        icon={<FavoriteBorder />}
+                        checkedIcon={<Favorite />}
+                      />
+                    </IconButton>
+                  </Box>
+                  <CardContent>
+                    <Typography
+                      sx={{
+                        fontSize: 20,
+                      }}
+                    >
+                      {title}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: 20,
+                        fontWeight: 500,
+                        color: "#A18A68",
+                      }}
+                    >
+                      ${price}
+                    </Typography>
+                  </CardContent>
                 </Box>
-                <CardContent>
-                  <Typography
-                    sx={{
-                      fontSize: 20,
-                    }}
-                  >
-                    {title}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontSize: 20,
-                      fontWeight: 500,
-                      color: "#A18A68",
-                    }}
-                  >
-                    ${price}
-                  </Typography>
-                </CardContent>
-              </Box>
-            </Grid>
-          );
-        })}
-      </Grid>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Stack>
     </>
   );
 };

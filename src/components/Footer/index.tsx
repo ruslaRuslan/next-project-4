@@ -1,11 +1,12 @@
 "use client";
 import {
-  Box,
+  Grid,
   Container,
   Divider,
-  Grid,
   IconButton,
+  TextField,
   Typography,
+  InputAdornment,
 } from "@mui/material";
 import Link from "next/link";
 import ArrowRightAltOutlinedIcon from "@mui/icons-material/ArrowRightAltOutlined";
@@ -20,82 +21,122 @@ interface Footer {
   href: any;
 }
 
-const footerData: Footer[] = [
+const footerDate: Footer[] = [
   {
     id: 0,
-    title: "CONTACT",
-    href: "contact",
+    title: "Home",
+    href: "/",
   },
+
   {
     id: 1,
-    title: "TERMS OF SERVICES",
-    href: "/",
+    title: "Help",
+    href: "/help",
   },
+
   {
     id: 2,
-    title: "SHIPPING AND RETURNS",
-    href: "/",
+    title: "Contact",
+    href: "/contact",
+  },
+  {
+    id: 3,
+    title: "Search",
+    href: "/search",
   },
 ];
 
 const Footer = () => {
   return (
-    <Box sx={{ bgcolor: "#f0f0f0", py: 4 }}>
-      <Container maxWidth="lg">
-        <Divider />
-        <Grid container spacing={4} sx={{ mt: 4 }}>
-          <Grid item xs={12} sm={6}>
-            <Grid container spacing={2}>
-              {footerData.map((item) => (
-                <Grid item key={item.id}>
-                  <Link href={item.href} passHref>
-                    <Typography
-                      sx={{ color: "#707070", textDecoration: "none" }}
-                      variant="body2"
-                      component="a"
-                    >
-                      {item.title}
-                    </Typography>
-                  </Link>
-                </Grid>
-              ))}
-            </Grid>
+    <>
+      <Container>
+        <Divider
+          sx={{
+            margin: "4rem 0 3rem 0",
+            bgcolor: "#D8D8D8",
+          }}
+        />
+
+        <Grid
+          container
+          sx={{
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Grid
+            sx={{
+              display: "flex",
+              gap: 4,
+              color: "#707070",
+            }}
+          >
+            {footerDate.map((props) => {
+              return (
+                <Link
+                  style={{
+                    marginTop: 8,
+                  }}
+                  key={props.id}
+                  href={props.href}
+                >
+                  {props.title}
+                </Link>
+              );
+            })}
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
+
+          <Grid
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <TextField
+              type="email"
+              label="Give an email, get the newsletter"
+              variant="standard"
+              fullWidth
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <ArrowRightAltOutlinedIcon />
+                  </InputAdornment>
+                ),
               }}
-            >
-              <Typography sx={{ color: "#707070" }}>
-                Give an email, get the newsletter.
-              </Typography>
-              <ArrowRightAltOutlinedIcon sx={{ width: 50 }} />
-            </Box>
-            <Box sx={{ borderTop: "2px solid #000", mt: 2 }} />
+            />
           </Grid>
         </Grid>
-        <Grid container spacing={2} sx={{ mt: 4 }}>
+        <Grid
+          sx={{
+            marginTop: 3,
+            display: {
+              xs: "block",
+              sm: "flex",
+            },
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography>
+            © 2021 Shelly.{" "}
+            <span
+              style={{
+                color: "#707070",
+              }}
+            >
+              Terms of use{" "}
+            </span>{" "}
+            and{" "}
+            <span
+              style={{
+                color: "#707070",
+              }}
+            >
+              privacy policy.
+            </span>
+          </Typography>
           <Grid item xs={12} sm={6}>
-            <Typography>
-              © 2021 Shelly.
-              <Typography sx={{ color: "#707070", display: "inline" }}>
-                Terms of use
-              </Typography>
-              and
-              <Typography sx={{ color: "#707070", display: "inline" }}>
-                privacy policy.
-              </Typography>
-            </Typography>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            sx={{ display: "flex", justifyContent: "flex-end" }}
-          >
             <IconButton>
               <LinkedInIcon />
             </IconButton>
@@ -111,7 +152,7 @@ const Footer = () => {
           </Grid>
         </Grid>
       </Container>
-    </Box>
+    </>
   );
 };
 

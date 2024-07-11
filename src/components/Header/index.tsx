@@ -18,24 +18,52 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import { Container } from "@mui/material";
+import { Container, Stack } from "@mui/material";
+import Image from "next/image";
+import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 
-const drawerWidth = 240;
 const navItems = [
   {
     id: 0,
-    title: "Shop",
+    title: "Home",
     href: "/",
   },
   {
     id: 1,
-    title: "Blog",
-    href: "/blog",
+    title: "Shop",
+    href: "/shop",
   },
   {
     id: 2,
-    title: "Our Story",
-    href: "/ourStory",
+    title: "About",
+    href: "/about",
+  },
+  {
+    id: 3,
+    title: "Blog",
+    href: "/blog",
+  },
+
+  {
+    id: 4,
+    title: "Help",
+    href: "/help",
+  },
+
+  {
+    id: 6,
+    title: "Contact",
+    href: "/contact",
+  },
+  {
+    id: 7,
+    title: "Search",
+    href: "/search",
+  },
+  {
+    id: 8,
+    title: "My account",
+    href: "/myAccount",
   },
 ];
 
@@ -67,30 +95,61 @@ function DrawerAppBar(props: any) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        EARRINGS
-      </Typography>
+    <Box sx={{ textAlign: "center" }}>
       <Divider />
-      <List>
-        {navItems.map(({ id, href, title }) => (
+      <List sx={{ position: "relative" }}>
+        <Container>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <p></p>
+            <Box>
+              <IconButton>
+                <ShoppingCartOutlinedIcon />
+              </IconButton>
+              <IconButton
+                onClick={() => setMobileOpen(false)}
+                sx={{
+                  fontSize: 30,
+                  color: "#000",
+                }}
+              >
+                <ClearOutlinedIcon />
+              </IconButton>
+            </Box>
+          </Box>
+          <TextField
+            sx={{
+              marginBottom: 2,
+            }}
+            fullWidth
+            label={
+              <>
+                <SearchIcon sx={{ marginRight: 1 }} />
+                Search
+              </>
+            }
+            variant="filled"
+          />
+        </Container>
+        {navItems.slice(0, 7).map(({ id, href, title }) => (
           <ListItem
             key={id}
             disablePadding
             onClick={() => handleNavItemClick(href)}
             sx={{
-              borderBottom: isActive(href) ? "#000" : "green",
-              "&:hover": {
-                borderBottom: isActive(href) ? "blue" : "green",
-              },
+              backgroundColor: isActive(href) ? "#000" : "inherit",
             }}
           >
             <Link
               style={{
-                color: isActive(href) ? "#red" : "#000",
+                color: isActive(href) ? "#fff" : "#000",
                 textDecoration: "none",
-                textTransform: "none",
-                fontSize: 24,
+                paddingLeft: "12px",
+                fontSize: 20,
                 fontWeight: 500,
               }}
               href={href}
@@ -100,6 +159,64 @@ function DrawerAppBar(props: any) {
             </Link>
           </ListItem>
         ))}
+        <Divider
+          sx={{
+            marginTop: 3,
+          }}
+        />
+        <Box
+          sx={{
+            marginTop: 3,
+          }}
+        >
+          {navItems.slice(7, 8).map(({ id, href, title }) => (
+            <ListItem
+              key={id}
+              disablePadding
+              onClick={() => handleNavItemClick(href)}
+              sx={{
+                backgroundColor: isActive(href) ? "#000" : "inherit",
+              }}
+            >
+              <Link
+                style={{
+                  color: isActive(href) ? "#fff" : "#000",
+                  textDecoration: "none",
+                  paddingLeft: "12px",
+
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: 20,
+                  fontWeight: 500,
+                }}
+                href={href}
+                passHref
+              >
+                <PersonOutlineOutlinedIcon />
+                {title}
+              </Link>
+            </ListItem>
+          ))}
+          <ListItem
+            sx={{
+              display: "flex",
+              gap: 1,
+            }}
+          >
+            <IconButton>
+              <Image src="/images/logo.svg" width={20} height={15} alt="" />
+            </IconButton>
+
+            <Typography
+              sx={{
+                fontSize: 20,
+                fontWeight: 500,
+              }}
+            >
+              Logout
+            </Typography>
+          </ListItem>
+        </Box>
       </List>
     </Box>
   );
@@ -125,8 +242,6 @@ function DrawerAppBar(props: any) {
             >
               <Typography
                 sx={{
-                  flexGrow: 1,
-                  display: { xs: "none", sm: "block" },
                   fontSize: 35,
                 }}
               >
@@ -141,29 +256,6 @@ function DrawerAppBar(props: any) {
                 HOPPE
               </Typography>
 
-              <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                {navItems.map(({ href, title, id }) => (
-                  <Link
-                    key={id}
-                    style={{
-                      color: "#000",
-                      textDecoration: "none",
-                      textTransform: "none",
-                      paddingLeft: "12px",
-                      paddingRight: "12px",
-                      borderBottom: isActive(href)
-                        ? "1px solid #000"
-                        : "1px solid transparent",
-                      padding: "8px 16px",
-                    }}
-                    href={href}
-                    onClick={() => handleNavItemClick(href)}
-                    passHref
-                  >
-                    {title}
-                  </Link>
-                ))}
-              </Box>
               <Box
                 sx={{
                   display: "flex",
@@ -171,6 +263,30 @@ function DrawerAppBar(props: any) {
                   gap: 1,
                 }}
               >
+                <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                  {navItems.slice(1, 4).map(({ href, title, id }) => (
+                    <Link
+                      key={id}
+                      style={{
+                        color: "#000",
+                        textDecoration: "none",
+                        textTransform: "none",
+                        paddingLeft: "12px",
+                        paddingRight: "12px",
+                        borderBottom: isActive(href)
+                          ? "1px solid #000"
+                          : "1px solid transparent",
+                        padding: "8px 16px",
+                      }}
+                      href={href}
+                      onClick={() => handleNavItemClick(href)}
+                      passHref
+                    >
+                      {title}
+                    </Link>
+                  ))}
+                </Box>
+
                 <Typography
                   sx={{
                     display: toggleDisplay(),
@@ -218,12 +334,32 @@ function DrawerAppBar(props: any) {
                     }}
                   />
                 </IconButton>
+
+                {navItems.slice(7, 8).map(({ id, href }) => {
+                  return (
+                    <>
+                      <Link key={id} href={href}>
+                        <IconButton
+                          color="inherit"
+                          edge="start"
+                          sx={{
+                            "@media screen and (max-width: 599px)": {
+                              display: "none",
+                            },
+                          }}
+                        >
+                          <PersonOutlineOutlinedIcon />
+                        </IconButton>
+                      </Link>
+                    </>
+                  );
+                })}
                 <Box
                   sx={{
                     display: "flex",
                   }}
                 >
-                  <IconButton color="inherit" aria-label="basket">
+                  <IconButton color="inherit">
                     <ShoppingCartOutlinedIcon />
                   </IconButton>
                   <IconButton
@@ -236,42 +372,29 @@ function DrawerAppBar(props: any) {
                     <MenuIcon style={{ color: "#000" }} />
                   </IconButton>
                 </Box>
-                <IconButton
-                  color="inherit"
-                  aria-label="basket"
-                  sx={{
-                    "@media screen and (max-width: 599px)": {
-                      display: "none",
-                    },
-                  }}
-                >
-                  <PersonOutlineOutlinedIcon />
-                </IconButton>
               </Box>
             </Container>
           </AppBar>
         </Container>
-        <nav>
-          <Drawer
-            container={container}
-            variant="temporary"
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-            sx={{
-              display: { xs: "block", sm: "none" },
-              "& .MuiDrawer-paper": {
-                boxSizing: "border-box",
-                width: "100%",
-                height: 200,
-              },
-            }}
-          >
-            {drawer}
-          </Drawer>
-        </nav>
+
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: "100%",
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
         <Box component="main" sx={{ p: 3 }}>
           <Toolbar />
         </Box>
@@ -279,7 +402,7 @@ function DrawerAppBar(props: any) {
       <Container
         sx={{
           display: {
-            xs: "block",
+            xs: "blok",
             sm: "block",
             md: "none",
             xl: "none",

@@ -76,7 +76,7 @@ const earrings: Earrings[] = [
   },
 ];
 
-const HomeComponent = () => {
+const HomeComponent2 = () => {
   const [view, setView] = React.useState("");
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -137,82 +137,106 @@ const HomeComponent = () => {
           </Select>
         </Box>
       </Box>
-
-      <Grid container spacing={4} justifyContent="center">
-        {earrings.map(({ id, img, title, price }) => {
-          return (
-            <Grid item xs={12} sm={6} md={4} lg={4}>
-              <Box
-                key={id}
-                sx={{
-                  marginTop: 1,
-                }}
-              >
-                <CardMedia
+      <Stack
+        flexDirection={"row"}
+        sx={{
+          flexDirection: { xs: "column", md: "row" },
+          gap: 2,
+        }}
+      >
+        <Grid item xs={12} sm={4} md={3} lg={3}>
+          <Card
+            sx={{
+              marginTop: 1,
+            }}
+          >
+            <TextField
+              fullWidth
+              label={
+                <>
+                  <SearchIcon sx={{ marginRight: 1 }} />
+                  Search
+                </>
+              }
+              variant="filled"
+            />
+          </Card>
+        </Grid>
+        <Grid container spacing={4} justifyContent="center">
+          {earrings.map(({ id, img, title, price }) => {
+            return (
+              <Grid item xs={12} sm={6} md={4} lg={4}>
+                <Box
+                  key={id}
                   sx={{
-                    width: "100%",
-                    height: 300,
-                    position: "relative",
-                    ":hover": {
-                      "& .icon-box": {
-                        opacity: 1,
-                      },
-                    },
+                    marginTop: 1,
                   }}
-                  image={img}
                 >
-                  <Box
-                    className="icon-box"
+                  <CardMedia
                     sx={{
-                      position: "absolute",
-                      top: "45%",
-                      left: "30%",
-                      opacity: 0,
-                      transition: "opacity 0.9s ease",
+                      width: "100%",
+                      height: 300,
+                      position: "relative",
+                      ":hover": {
+                        "& .icon-box": {
+                          opacity: 1,
+                        },
+                      },
+                    }}
+                    image={img}
+                  >
+                    <Box
+                      className="icon-box"
+                      sx={{
+                        position: "absolute",
+                        top: "45%",
+                        left: "30%",
+                        opacity: 0,
+                        transition: "opacity 0.9s ease",
+                      }}
+                    >
+                      <IconButton color="inherit" aria-label="basket">
+                        <ShoppingCartOutlinedIcon />
+                      </IconButton>
+
+                      <IconButton color="inherit" aria-label="basket">
+                        <VisibilityOutlinedIcon />
+                      </IconButton>
+
+                      <IconButton color="inherit" aria-label="basket">
+                        <Checkbox
+                          icon={<FavoriteBorder />}
+                          checkedIcon={<Favorite />}
+                        />
+                      </IconButton>
+                    </Box>
+                  </CardMedia>
+                </Box>
+                <CardContent>
+                  <Typography
+                    sx={{
+                      fontSize: 20,
                     }}
                   >
-                    <IconButton color="inherit" aria-label="basket">
-                      <ShoppingCartOutlinedIcon />
-                    </IconButton>
-
-                    <IconButton color="inherit" aria-label="basket">
-                      <VisibilityOutlinedIcon />
-                    </IconButton>
-
-                    <IconButton color="inherit" aria-label="basket">
-                      <Checkbox
-                        icon={<FavoriteBorder />}
-                        checkedIcon={<Favorite />}
-                      />
-                    </IconButton>
-                  </Box>
-                </CardMedia>
-              </Box>
-              <CardContent>
-                <Typography
-                  sx={{
-                    fontSize: 20,
-                  }}
-                >
-                  {title}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: 20,
-                    fontWeight: 500,
-                    color: "#A18A68",
-                  }}
-                >
-                  ${price}
-                </Typography>
-              </CardContent>
-            </Grid>
-          );
-        })}
-      </Grid>
-      {/* </Stack> */}
+                    {title}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: 20,
+                      fontWeight: 500,
+                      color: "#A18A68",
+                    }}
+                  >
+                    ${price}
+                  </Typography>
+                </CardContent>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Stack>
     </>
   );
 };
 
-export default HomeComponent;
+export default HomeComponent2;

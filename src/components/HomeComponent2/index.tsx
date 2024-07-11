@@ -1,6 +1,9 @@
 "use client";
 import * as React from "react";
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Card,
   CardContent,
@@ -18,8 +21,10 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Favorite from "@mui/icons-material/Favorite";
 import SearchIcon from "@mui/icons-material/Search";
+import SliderHome from "@/components/SliderHome";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -94,7 +99,7 @@ const HomeComponent2 = () => {
       >
         <Typography
           sx={{
-            fontSize: 25,
+            fontSize: 20,
             fontWeight: 500,
           }}
         >
@@ -161,6 +166,47 @@ const HomeComponent2 = () => {
               variant="filled"
             />
           </Card>
+          <Accordion
+            sx={{
+              marginTop: 2,
+              width: 300,
+              "@media (max-width: 900px)": {
+                width: "100%",
+              },
+            }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              Shop By
+            </AccordionSummary>
+            <AccordionDetails>
+              Yes, you can place your order until 12pm to get it the same day,
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            sx={{
+              marginTop: 2,
+              width: 300,
+              "@media (max-width: 900px)": {
+                width: "100%",
+              },
+            }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              Sort By
+            </AccordionSummary>
+            <AccordionDetails>
+              Yes, you can place your order until 12pm to get it the same day,
+            </AccordionDetails>
+          </Accordion>
+          <SliderHome />
         </Grid>
         <Grid container spacing={4} justifyContent="center">
           {earrings.map(({ id, img, title, price }) => {

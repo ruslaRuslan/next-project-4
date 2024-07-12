@@ -52,8 +52,6 @@ export default () => {
       modules={[Navigation, Pagination, Autoplay]}
       spaceBetween={0}
       pagination={{ clickable: true }}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
       autoplay={{
         delay: 950,
       }}

@@ -25,8 +25,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Favorite from "@mui/icons-material/Favorite";
 import SearchIcon from "@mui/icons-material/Search";
 import SliderHome from "@/components/SliderHome";
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
+import Link from "next/link";
 
 interface Earrings {
   id: number;
@@ -259,13 +258,15 @@ const HomeComponent2 = () => {
                   </CardMedia>
                 </Box>
                 <CardContent>
-                  <Typography
-                    sx={{
+                  <Link
+                    href={`/shop/${id}`}
+                    style={{
                       fontSize: 20,
+                      cursor: "pointer",
                     }}
                   >
                     {title}
-                  </Typography>
+                  </Link>
                   <Typography
                     sx={{
                       fontSize: 20,

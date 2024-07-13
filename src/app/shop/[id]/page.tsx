@@ -1,62 +1,29 @@
-// "use client";
+"use client";
 import BasicRating from "@/components/BasicRating";
-import { Box, CardMedia, Container, Grid, Typography } from "@mui/material";
-
-interface Earrings {
-  id: number;
-  img: any;
-  title: string;
-  price: number;
-  basket: any;
-}
-
-const earrings: Earrings[] = [
-  {
-    id: 0,
-    img: "/images/earring1.svg",
-    title: "Lira Earrings",
-    price: 20,
-    basket: "/images/basket.svg",
-  },
-  {
-    id: 1,
-    img: "/images/earring2.svg",
-    title: "Hal Earrings",
-    price: 25,
-    basket: "/images/basket.svg",
-  },
-  {
-    id: 2,
-    img: "/images/earring3.svg",
-    title: "Kaede Hair Pin Set Of 3 ",
-    price: 30,
-    basket: "/images/basket.svg",
-  },
-  {
-    id: 3,
-    img: "/images/earring4.svg",
-    title: "Hair Pin Set of 3",
-    price: 30,
-    basket: "/images/basket.svg",
-  },
-  {
-    id: 4,
-    img: "/images/earring5.svg",
-    title: "Plaine Necklace",
-    price: 19,
-    basket: "/images/basket.svg",
-  },
-  {
-    id: 5,
-    img: "/images/earring6.svg",
-    title: "Yuki Hair Pin Set of 3",
-    price: 29,
-    basket: "/images/basket.svg",
-  },
-];
+import {
+  Box,
+  Button,
+  CardMedia,
+  Checkbox,
+  Container,
+  Grid,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import RemoveIcon from "@mui/icons-material/Remove";
+import AddIcon from "@mui/icons-material/Add";
+import { useState } from "react";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import FloatingButton from "@/components/FloatingButton";
+import { earrings } from "@/components/Earning";
 
 export default async function Page({ params }: any) {
   const element = earrings.find(({ id }) => id == params.id);
+  // const [count, setCount] = useState<number>(0);
   return (
     <>
       <Container
@@ -80,7 +47,9 @@ export default async function Page({ params }: any) {
               image={element?.img}
               alt=""
               sx={{
-                height: 200,
+                height: 150,
+                borderRadius: 2,
+
                 maxWidth: 200,
               }}
             />
@@ -89,7 +58,9 @@ export default async function Page({ params }: any) {
               image={element?.img}
               alt=""
               sx={{
-                height: 200,
+                height: 150,
+                borderRadius: 2,
+
                 maxWidth: 200,
                 margin: "15px 0 15px 0",
               }}
@@ -99,7 +70,9 @@ export default async function Page({ params }: any) {
               image={element?.img}
               alt=""
               sx={{
-                height: 200,
+                height: 150,
+                borderRadius: 2,
+
                 maxWidth: 200,
               }}
             />
@@ -110,8 +83,8 @@ export default async function Page({ params }: any) {
               image={element?.img}
               alt=""
               sx={{
-                height: 650,
-                borderRadius: 0,
+                height: 480,
+                borderRadius: 2,
               }}
             />
           </Grid>
@@ -156,7 +129,6 @@ export default async function Page({ params }: any) {
                 marginTop: 3,
                 color: "#707070",
                 fontSize: 15,
-                // width: "300px",
               }}
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
@@ -164,7 +136,115 @@ export default async function Page({ params }: any) {
               augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu
               facilisis consequat sed eu felis.
             </Typography>
+            <Box
+              sx={{
+                marginTop: 3,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <IconButton>
+                  <RemoveIcon />
+                  {/* onClick={() => {
+                      if (count !== 1) {
+                        setCount(count - 1);
+                      }
+                    }} */}
+                </IconButton>
+                <Typography>0</Typography>
+
+                {/* onClick={() => setCount((prev) => prev + 1)} */}
+                <IconButton>
+                  <AddIcon />
+                </IconButton>
+              </Box>
+              <Button
+                variant="outlined"
+                sx={{
+                  border: "1px solid #000",
+                  color: "#000",
+                  "&:hover": {
+                    border: "1px solid #000",
+                    color: "#000",
+                  },
+                }}
+              >
+                add to cart
+              </Button>
+            </Box>
+            <Box
+              sx={{
+                marginTop: 3,
+                display: "flex",
+                alignItems: "center",
+                gap: 5,
+              }}
+            >
+              <IconButton color="inherit" aria-label="basket">
+                <Checkbox
+                  icon={<FavoriteBorder />}
+                  checkedIcon={<Favorite />}
+                />
+              </IconButton>
+              <Box>
+                <IconButton>
+                  <MailOutlineOutlinedIcon />
+                </IconButton>
+
+                <IconButton>
+                  <FacebookOutlinedIcon />
+                </IconButton>
+
+                <IconButton>
+                  <InstagramIcon />
+                </IconButton>
+
+                <IconButton>
+                  <TwitterIcon />
+                </IconButton>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                marginTop: 2,
+                display: "flex",
+                gap: 3,
+              }}
+            >
+              <Typography>SKU:</Typography>
+              <Typography
+                sx={{
+                  color: "#707070",
+                }}
+              >
+                12
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                marginTop: 2,
+                display: "flex",
+                gap: 3,
+              }}
+            >
+              <Typography>Categories:</Typography>
+              <Typography
+                sx={{
+                  color: "#707070",
+                }}
+              >
+                Fashion, Style
+              </Typography>
+            </Box>
           </Grid>
+          <FloatingButton />
         </Grid>
       </Container>
     </>

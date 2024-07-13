@@ -19,12 +19,13 @@ import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FloatingButton from "@/components/FloatingButton";
-import { earrings } from "@/components/Earning";
+import { earrings } from "@/components/Data";
 import ThreeCard from "@/components/ThreeCard";
 
 export default async function Page({ params }: any) {
   const element = earrings.find(({ id }) => id == params.id);
   // const [count, setCount] = useState<number>(0);
+
   return (
     <>
       <Container

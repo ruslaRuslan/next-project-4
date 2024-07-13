@@ -1,7 +1,11 @@
 import React from "react";
-
+import AboutComponents from "@/components/AboutComponents";
 const About = () => {
-  return <div>About</div>;
+  return (
+    <>
+      <AboutComponents />
+    </>
+  );
 };
 
 export default About;

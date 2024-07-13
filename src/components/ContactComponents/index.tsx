@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import * as React from "react";
 
 const ContactComponents = () => {
   return (

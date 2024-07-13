@@ -1,6 +1,6 @@
 import { CardMedia, Grid, Typography } from "@mui/material";
 import React from "react";
-import { earrings } from "../Earning";
+import { earrings } from "../Data";
 
 const ThreeCard = () => {
   const selectedProducts = [earrings[1], earrings[4], earrings[3]];

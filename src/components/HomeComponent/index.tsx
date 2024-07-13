@@ -20,7 +20,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import SearchIcon from "@mui/icons-material/Search";
-import { earrings } from "../Earning";
+import { earrings } from "../Data";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 

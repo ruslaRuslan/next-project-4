@@ -16,7 +16,7 @@ import {
   TextField,
 } from "@mui/material";
 import BasicRating from "../BasicRating";
-import { earrings } from "../Earning";
+import { earrings } from "../Data";
 
 interface TabPanelProps {
   children?: React.ReactNode;

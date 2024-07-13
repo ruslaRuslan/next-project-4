@@ -28,7 +28,7 @@ import SliderHome from "@/components/SliderHome";
 import Link from "next/link";
 import { earrings } from "../Data";
 
-const HomeComponent2 = () => {
+const BlogComponent = () => {
   const [view, setView] = React.useState("");
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -50,7 +50,7 @@ const HomeComponent2 = () => {
             fontWeight: 500,
           }}
         >
-          Shop The Latest
+          Blog
         </Typography>
         <Box
           sx={{
@@ -234,4 +234,4 @@ const HomeComponent2 = () => {
   );
 };
 
-export default HomeComponent2;
+export default BlogComponent;

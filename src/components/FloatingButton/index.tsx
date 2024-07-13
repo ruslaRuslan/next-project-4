@@ -55,7 +55,7 @@ export default function FloatingButton() {
   const handleChange = (event: unknown, newValue: number) => {
     setValue(newValue);
   };
-  const selectedProducts = [earrings[1], earrings[4], earrings[3]];
+
   return (
     <>
       <Box
@@ -333,50 +333,6 @@ export default function FloatingButton() {
           </Grid>
         </TabPanel>
       </Box>
-      <Typography
-        sx={{
-          marginTop: 3,
-          fontSize: 23,
-        }}
-      >
-        Similar Items
-      </Typography>
-
-      <Container>
-        <Grid container justifyContent="center" spacing={3}>
-          {selectedProducts.map(({ id, img, title, price }) => {
-            return (
-              <Grid item xs={12} md={6} lg={4} key={id}>
-                <CardMedia
-                  component="img"
-                  image={img}
-                  alt=""
-                  sx={{
-                    marginTop: 3,
-                    height: 370,
-                    borderRadius: 2,
-                  }}
-                />
-                <Typography
-                  sx={{
-                    marginTop: 2,
-                  }}
-                >
-                  {title}
-                </Typography>
-                <Typography
-                  sx={{
-                    marginTop: 2,
-                    color: "#A18A68",
-                  }}
-                >
-                  ${price},00
-                </Typography>
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Container>
     </>
   );
 }

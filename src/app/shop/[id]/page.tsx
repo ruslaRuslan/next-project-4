@@ -20,6 +20,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FloatingButton from "@/components/FloatingButton";
 import { earrings } from "@/components/Earning";
+import ThreeCard from "@/components/ThreeCard";
 
 export default async function Page({ params }: any) {
   const element = earrings.find(({ id }) => id == params.id);
@@ -246,6 +247,9 @@ export default async function Page({ params }: any) {
           </Grid>
           <FloatingButton />
         </Grid>
+      </Container>
+      <Container>
+        <ThreeCard />
       </Container>
     </>
   );

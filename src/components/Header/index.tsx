@@ -21,51 +21,7 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import { Container, Stack } from "@mui/material";
 import Image from "next/image";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
-
-const navItems = [
-  {
-    id: 0,
-    title: "Home",
-    href: "/",
-  },
-  {
-    id: 1,
-    title: "Shop",
-    href: "/shop",
-  },
-  {
-    id: 2,
-    title: "About",
-    href: "/about",
-  },
-  {
-    id: 3,
-    title: "Blog",
-    href: "/blog",
-  },
-
-  {
-    id: 4,
-    title: "Help",
-    href: "/help",
-  },
-
-  {
-    id: 6,
-    title: "Contact",
-    href: "/contact",
-  },
-  {
-    id: 7,
-    title: "Search",
-    href: "/search",
-  },
-  {
-    id: 8,
-    title: "My account",
-    href: "/myAccount",
-  },
-];
+import { navItems } from "../Data";
 
 function DrawerAppBar(props: any) {
   const { window } = props;

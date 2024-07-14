@@ -1,3 +1,72 @@
+
+
+
+interface NavItems {
+    id: number;
+    img: any;
+    title: string;
+    href: any
+}
+export const navItems = [
+    {
+        id: 0,
+        title: "Home",
+        href: "/",
+    },
+    {
+        id: 1,
+        title: "Shop",
+        href: "/shop",
+    },
+    {
+        id: 2,
+        title: "About",
+        href: "/about",
+    },
+    {
+        id: 3,
+        title: "Blog",
+        href: "/blog",
+    },
+
+    {
+        id: 4,
+        title: "Help",
+        href: "/help",
+    },
+
+    {
+        id: 6,
+        title: "Contact",
+        href: "/contact",
+    },
+    {
+        id: 7,
+        title: "Search",
+        href: "/search",
+    },
+    {
+        id: 8,
+        title: "My account",
+        href: "/myAccount",
+    },
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 interface Earrings {
     id: number;
     img: any;

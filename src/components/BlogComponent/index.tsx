@@ -159,11 +159,6 @@ const BlogComponent = () => {
           })}
         </Grid>
       </Stack>
-      <Box
-        sx={{
-          bgcolor: "red",
-        }}
-      ></Box>
     </>
   );
 };

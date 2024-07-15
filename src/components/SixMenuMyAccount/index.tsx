@@ -17,19 +17,11 @@ const MyAccountComponent = (props: any) => {
 
   return (
     <>
-      <Typography
+      <Box
         sx={{
           marginTop: 7,
-          marginBottom: 5,
-          textAlign: "center",
-          fontSize: 25,
-          fontWeight: 700,
         }}
       >
-        My Account
-      </Typography>
-
-      <Box>
         {myAccountItems.map(({ id, href, title }) => (
           <Link
             key={id}

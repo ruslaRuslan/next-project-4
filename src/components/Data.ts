@@ -1,6 +1,3 @@
-
-
-
 interface NavItems {
     id: number;
     img: any;
@@ -9,28 +6,28 @@ interface NavItems {
 }
 export const navItems = [
     {
-        id: 0,
+        id: 1,
         title: "Home",
         href: "/",
     },
     {
-        id: 1,
+        id: 2,
         title: "Shop",
         href: "/shop",
     },
     {
-        id: 2,
+        id: 3,
         title: "About",
         href: "/about",
     },
     {
-        id: 3,
+        id: 4,
         title: "Blog",
         href: "/blog",
     },
 
     {
-        id: 4,
+        id: 5,
         title: "Help",
         href: "/help",
     },
@@ -48,7 +45,7 @@ export const navItems = [
     {
         id: 8,
         title: "My account",
-        href: "/myAccount",
+        href: "/my-account",
     },
 ];
 
@@ -157,5 +154,51 @@ export const blog: BlogType[] = [
 
 
     },
+
+];
+
+
+
+
+interface MyAccountItemsType {
+    id: number;
+    href: any
+    title: string;
+}
+
+export const myAccountItems: MyAccountItemsType[] = [
+    {
+        id: 1,
+        href: "/dashboard",
+        title: "Dashboard",
+    },
+    {
+        id: 2,
+        href: "/orders",
+        title: "Orders",
+    },
+    {
+        id: 3,
+        href: "/downloads",
+        title: "Downloads",
+    },
+    {
+        id: 4,
+        href: "/addresses",
+        title: "Addresses",
+    },
+
+    {
+        id: 5,
+        href: "/account-details",
+        title: "Account details",
+    },
+
+    {
+        id: 6,
+        href: "/logout",
+        title: "Logout",
+    },
+
 
 ];

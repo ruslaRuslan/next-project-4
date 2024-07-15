@@ -1,10 +1,13 @@
 import { blog } from "@/components/Data";
 import TopTrends from "@/components/TopTrends";
 import { CardMedia, Container, Typography } from "@mui/material";
+import { redirect } from "next/navigation";
 
 export default async function PageIdBlog({ params }: any) {
   const element = blog.find(({ id }) => params.id == id);
-
+  if (!element) {
+    return redirect("/not-found");
+  }
   return (
     <Container
       sx={{

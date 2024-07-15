@@ -2,10 +2,13 @@ import { CardMedia, Container, Grid, Typography } from "@mui/material";
 import FloatingButton from "@/components/FloatingButton";
 import { earrings } from "@/components/Data";
 import IdShop from "@/components/IdShop";
+import { redirect } from "next/navigation";
 
 export default async function Page({ params }: any) {
   const element = earrings.find(({ id }) => id == params.id);
-
+  if (!element) {
+    return redirect("/not-found");
+  }
   return (
     <>
       <Container

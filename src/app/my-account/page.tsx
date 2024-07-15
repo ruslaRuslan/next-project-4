@@ -1,8 +1,11 @@
 import MyAccountComponent from "@/components/MyAccountComponent";
+import { Container } from "@mui/material";
 const MyAccount = () => {
   return (
     <>
-      <MyAccountComponent />
+      <Container>
+        <MyAccountComponent />
+      </Container>
     </>
   );
 };

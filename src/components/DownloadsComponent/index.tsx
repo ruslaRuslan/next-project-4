@@ -36,5 +36,4 @@ const DownloadsComponent = () => {
     </>
   );
 };
-
 export default DownloadsComponent;

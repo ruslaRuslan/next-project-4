@@ -9,7 +9,7 @@ export default async function Page({ params }: any) {
   return (
     <>
       <Container
-        sx={
+        sx={{
           display: "flex",
           gap: 3,
         }}

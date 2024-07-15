@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import BasicRating from "../BasicRating";
 import { earrings } from "../Data";
+import ThreeCard from "../ThreeCard";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -333,6 +334,13 @@ export default function FloatingButton() {
           </Grid>
         </TabPanel>
       </Box>
+      <Container
+        sx={{
+          marginBottom: 7,
+        }}
+      >
+        <ThreeCard />
+      </Container>
     </>
   );
 }

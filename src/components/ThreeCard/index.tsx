@@ -8,7 +8,6 @@ const ThreeCard = () => {
     <>
       <Typography
         sx={{
-          marginTop: 3,
           fontSize: 23,
         }}
       >

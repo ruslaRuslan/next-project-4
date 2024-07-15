@@ -7,7 +7,6 @@
   box-sizing: border-box;
   color: #000;
 }
-
-.custom-slide {
-  width: 100%;
+ul {
+  list-style: disc;
 }

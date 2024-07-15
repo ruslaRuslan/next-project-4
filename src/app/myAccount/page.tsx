@@ -1,7 +1,10 @@
-import React from "react";
-
-const myAccount = () => {
-  return <div>myAccount</div>;
+import MyAccountComponent from "@/components/MyAccountComponent";
+const MyAccount = () => {
+  return (
+    <>
+      <MyAccountComponent />
+    </>
+  );
 };
 
-export default myAccount;
+export default MyAccount;

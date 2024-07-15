@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import {
   Button,
-  CardMedia,
   Checkbox,
   Container,
   Divider,
@@ -16,7 +15,6 @@ import {
   TextField,
 } from "@mui/material";
 import BasicRating from "../BasicRating";
-import { earrings } from "../Data";
 import ThreeCard from "../ThreeCard";
 
 interface TabPanelProps {

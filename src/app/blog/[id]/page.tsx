@@ -47,7 +47,7 @@ export default async function PageIdBlog({ params }: any) {
         }}
         component="img"
         image={element?.img}
-        alt="green iguana"
+        alt=""
       />
 
       <Typography

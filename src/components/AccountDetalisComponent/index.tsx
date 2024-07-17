@@ -45,7 +45,7 @@ const AccountDetalisComponent = () => {
           <Typography
             sx={{
               color: "#707070",
-              marginTop: 1,
+              marginTop: 2,
             }}
           >
             This will be how your name will be displayed in the account section

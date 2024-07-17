@@ -104,7 +104,6 @@ const AboutComponents = () => {
         <Typography
           sx={{
             marginTop: 5,
-            // fontSize: 26,
           }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam

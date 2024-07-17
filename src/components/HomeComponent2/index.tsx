@@ -23,8 +23,9 @@ import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Favorite from "@mui/icons-material/Favorite";
-import SearchIcon from "@mui/icons-material/Search";
 import SliderHome from "@/components/SliderHome";
+import SearchTextField from "@/components/SearchTextField";
+
 import Link from "next/link";
 import { earrings } from "../Data";
 
@@ -102,16 +103,7 @@ const HomeComponent2 = () => {
               marginTop: 1,
             }}
           >
-            <TextField
-              fullWidth
-              label={
-                <>
-                  <SearchIcon sx={{ marginRight: 1 }} />
-                  Search
-                </>
-              }
-              variant="filled"
-            />
+            <SearchTextField />
           </Card>
           <Accordion
             sx={{

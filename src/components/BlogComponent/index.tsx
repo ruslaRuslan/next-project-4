@@ -7,16 +7,14 @@ import {
   Stack,
   TextField,
   Typography,
-  ToggleButtonGroup,
-  ToggleButton,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Link from "next/link";
 import { blog } from "../Data";
+import SearchTextField from "@/components/SearchTextField";
 
 const BlogComponent = () => {
   const [alignment, setAlignment] = React.useState<string | null>("left");
-
   const handleAlignment = (
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string | null
@@ -51,16 +49,7 @@ const BlogComponent = () => {
         }}
       >
         <Grid item xs={12} sm={4} md={3} lg={3}>
-          <TextField
-            fullWidth
-            label={
-              <>
-                <SearchIcon sx={{ marginRight: 1 }} />
-                Search
-              </>
-            }
-            variant="filled"
-          />
+          <SearchTextField />
           <Typography
             sx={{
               marginTop: 5,

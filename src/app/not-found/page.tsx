@@ -27,7 +27,7 @@ const NotFound = () => {
         >
           This page not found; back to home and start again
         </Typography>
-        <Link href="/" style={{}}>
+        <Link href="/">
           <Button
             variant="text"
             sx={{

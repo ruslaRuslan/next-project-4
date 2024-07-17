@@ -1,8 +1,8 @@
 "use client";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { myAccountItems, navItems } from "../Data";
+import { myAccountItems } from "../Data";
 import Link from "next/link";
 
 const MyAccountComponent = (props: any) => {

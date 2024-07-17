@@ -1,4 +1,6 @@
+"use client";
 import {
+  Autocomplete,
   Box,
   Button,
   Container,
@@ -7,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
+import { earrings } from "../Data";
 
 const ContactComponents = () => {
   return (
@@ -61,14 +64,15 @@ const ContactComponents = () => {
               variant="standard"
               label="Last name"
             />
-            <TextField
+            <Autocomplete
               sx={{
                 marginTop: 5,
               }}
-              type="text"
+              options={earrings.map((earring) => earring.title)}
               fullWidth
-              variant="standard"
-              label="Subject"
+              renderInput={(params) => (
+                <TextField variant="standard" {...params} label="Subject" />
+              )}
             />
           </Grid>
           <Grid item xs={12} md={12} lg={12} sm={12}>

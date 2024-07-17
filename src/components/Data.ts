@@ -205,4 +205,22 @@ export const myAccountItems: MyAccountItemsType[] = [
 
 
 
+interface LoginType {
+    id: number;
+    href: any
+    title: string;
+}
+
+export const login: LoginType[] = [
+    {
+        id: 1,
+        href: "/sign-in",
+        title: "Sign in",
+    },
+    {
+        id: 2,
+        href: "/register",
+        title: "Register",
+    },
+];
 

@@ -49,6 +49,11 @@ const footerDate: Footer[] = [
     title: "Privacy Policy",
     href: "privacy-policy",
   },
+  {
+    id: 5,
+    title: "Login",
+    href: "login",
+  },
 ];
 
 const Footer = () => {

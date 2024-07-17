@@ -56,6 +56,7 @@ const PrivacyPolicyComponent = () => {
         </Typography>
         <Box
           sx={{
+            marginBottom: "10rem",
             marginLeft: 3,
           }}
         >

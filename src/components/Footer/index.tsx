@@ -52,7 +52,7 @@ const footerDate: Footer[] = [
   {
     id: 5,
     title: "Login",
-    href: "login",
+    href: "sign-in",
   },
 ];
 

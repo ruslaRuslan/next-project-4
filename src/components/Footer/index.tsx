@@ -75,10 +75,14 @@ const Footer = () => {
           }}
         >
           <Grid
+            item
+            xs="auto"
+            md="auto"
             sx={{
               display: "flex",
-              gap: 4,
+              gap: 2,
               color: "#707070",
+              flexDirection: { xs: "column", sm: "row", md: "row", lg: "row" },
             }}
           >
             {footerDate.map((props) => {
@@ -87,16 +91,17 @@ const Footer = () => {
                   style={{
                     marginTop: 8,
                   }}
-                  key={props.id}
-                  href={props.href}
+                  key={props?.id}
+                  href={props?.href}
                 >
-                  {props.title}
+                  {props?.title}
                 </Link>
               );
             })}
           </Grid>
 
           <Grid
+            item
             sx={{
               display: "flex",
               alignItems: "center",

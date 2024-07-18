@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import Link from "next/link";
 
 const SignInComponent = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -116,6 +117,14 @@ const SignInComponent = () => {
         >
           SIGN IN
         </Button>
+      </Box>
+      <Box
+        sx={{
+          marginTop: 3,
+          textAlign: "center",
+        }}
+      >
+        <Link href="/forgot-password">Have you forgotten your password?</Link>
       </Box>
     </>
   );

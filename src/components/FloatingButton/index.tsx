@@ -335,6 +335,7 @@ export default function FloatingButton() {
       <Container
         sx={{
           marginBottom: 7,
+          pr: 0,
         }}
       >
         <ThreeCard />

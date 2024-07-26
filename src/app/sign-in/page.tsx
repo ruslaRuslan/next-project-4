@@ -1,4 +1,3 @@
-"use client";
 import LoginComponent from "@/components/LoginComponent";
 import SignInComponent from "@/components/SignInComponent";
 import { Container } from "@mui/material";

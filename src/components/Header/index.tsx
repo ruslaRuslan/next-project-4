@@ -18,16 +18,22 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import { Container, Stack } from "@mui/material";
+import { Badge, Container, Stack } from "@mui/material";
 import Image from "next/image";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { navItems } from "../Data";
+import { useAppSelector } from "@/store/store";
 
 function DrawerAppBar(props: any) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
+  const [isClient, setIsClient] = React.useState(false);
+
   const p = usePathname();
   const isActive = (path: any) => path === p;
+
+  const length = useAppSelector((state) => state.basket.basketState.length);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -36,19 +42,23 @@ function DrawerAppBar(props: any) {
   const handleNavItemClick = (href: any) => {
     setMobileOpen(false);
   };
-  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
 
   const handleSearchClick = () => {
     setIsSearchOpen(!isSearchOpen);
   };
 
   const toggleDisplay = () => {
-    if (isSearchOpen) {
-      return "none";
-    } else {
-      return "block";
-    }
+    return isSearchOpen ? "none" : "block";
   };
+
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    // Ensure this component is rendered correctly on the server by avoiding rendering client-specific logic
+    return null;
+  }
 
   const drawer = (
     <Box sx={{ textAlign: "center" }}>
@@ -139,7 +149,6 @@ function DrawerAppBar(props: any) {
                   color: isActive(href) ? "#fff" : "#000",
                   textDecoration: "none",
                   paddingLeft: "12px",
-
                   display: "flex",
                   alignItems: "center",
                   fontSize: 20,
@@ -162,7 +171,6 @@ function DrawerAppBar(props: any) {
             <IconButton>
               <Image src="/images/logo.svg" width={20} height={15} alt="" />
             </IconButton>
-
             <Typography
               sx={{
                 fontSize: 20,
@@ -191,6 +199,7 @@ function DrawerAppBar(props: any) {
           >
             <Container
               sx={{
+                marginTop: 2,
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -219,10 +228,9 @@ function DrawerAppBar(props: any) {
                   gap: 1,
                 }}
               >
-                <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                  {navItems.slice(1, 4).map(({ href, title, id }) => (
+                {navItems.slice(1, 4).map(({ href, title, id }) => (
+                  <Box key={id} sx={{ display: { xs: "none", sm: "block" } }}>
                     <Link
-                      key={id}
                       style={{
                         color: "#000",
                         textDecoration: "none",
@@ -240,8 +248,8 @@ function DrawerAppBar(props: any) {
                     >
                       {title}
                     </Link>
-                  ))}
-                </Box>
+                  </Box>
+                ))}
 
                 <Typography
                   sx={{
@@ -293,21 +301,19 @@ function DrawerAppBar(props: any) {
 
                 {navItems.slice(7, 8).map(({ id, href }) => {
                   return (
-                    <>
-                      <Link key={id} href={href}>
-                        <IconButton
-                          color="inherit"
-                          edge="start"
-                          sx={{
-                            "@media screen and (max-width: 599px)": {
-                              display: "none",
-                            },
-                          }}
-                        >
-                          <PersonOutlineOutlinedIcon />
-                        </IconButton>
-                      </Link>
-                    </>
+                    <Link key={id} href={href}>
+                      <IconButton
+                        color="inherit"
+                        edge="start"
+                        sx={{
+                          "@media screen and (max-width: 599px)": {
+                            display: "none",
+                          },
+                        }}
+                      >
+                        <PersonOutlineOutlinedIcon />
+                      </IconButton>
+                    </Link>
                   );
                 })}
                 <Box
@@ -315,9 +321,18 @@ function DrawerAppBar(props: any) {
                     display: "flex",
                   }}
                 >
-                  <IconButton color="inherit">
-                    <ShoppingCartOutlinedIcon />
-                  </IconButton>
+                  <Badge
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    badgeContent={length}
+                    color="error"
+                  >
+                    <IconButton color="inherit">
+                      <ShoppingCartOutlinedIcon />
+                    </IconButton>
+                  </Badge>
                   <IconButton
                     color="inherit"
                     aria-label="open drawer"
@@ -358,7 +373,7 @@ function DrawerAppBar(props: any) {
       <Container
         sx={{
           display: {
-            xs: "blok",
+            xs: "block",
             sm: "block",
             md: "none",
             xl: "none",

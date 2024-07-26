@@ -99,7 +99,7 @@ const BlogComponent = () => {
         <Grid container spacing={4}>
           {blog.map(({ id, img, title, text, info, fashionDate }) => {
             return (
-              <Grid item xs={12} sm={6} md={6} lg={6}>
+              <Grid key={id} item xs={12} sm={6} md={6} lg={6}>
                 <CardMedia
                   sx={{
                     height: 350,

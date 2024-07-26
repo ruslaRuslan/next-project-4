@@ -91,7 +91,14 @@ export default async function Page({ params }: any) {
             >
               ${element?.price}
             </Typography>
-            <IdShop />
+            <IdShop
+              count={0}
+              basket=""
+              id={element?.id}
+              img={element?.img}
+              title={element?.title}
+              price={element?.price}
+            />
           </Grid>
           <FloatingButton />
         </Grid>

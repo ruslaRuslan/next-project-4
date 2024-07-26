@@ -22,6 +22,7 @@ const TopTrends = () => {
         return (
           <>
             <CardMedia
+              key={props.id}
               sx={{
                 marginTop: 3,
                 boderRadius: 2,

@@ -11,9 +11,11 @@ export default function RootLayout({ children }: any) {
   return (
     <html lang="en" style={{ scrollBehavior: "smooth" }}>
       <body>
-        <Header />
-        <Providers>{children}</Providers>
-        <Footer />
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

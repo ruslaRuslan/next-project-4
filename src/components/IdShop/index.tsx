@@ -1,25 +1,48 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import {
-  Box,
-  Button,
-  Checkbox,
-  Container,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Checkbox, IconButton, Typography } from "@mui/material";
 import BasicRating from "../BasicRating";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import FloatingButton from "../FloatingButton";
-import ThreeCard from "@/components/ThreeCard";
-const IdShop = () => {
-  const [count, setCount] = useState<number>(0);
+import { useAppDispatch, useAppSelector } from "@/store/store";
+import {
+  addBasket,
+  decreaseCount,
+  increaseCount,
+  removeProduct,
+} from "@/store/basketSlice";
+
+interface BasketItem {
+  id: number;
+  img: string;
+  title: string;
+  price: number;
+  count: number;
+  basket: string;
+}
+
+const IdShop = ({ id, img, title, price, basket }: BasketItem) => {
+  const dispatch = useAppDispatch();
+  const [isClient, setIsClient] = useState(false);
+
+  const product = useAppSelector((state) =>
+    state.basket.basketState.find((el) => el.id === id)
+  );
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    // Ensure this component is rendered correctly on the server by avoiding rendering client-specific logic
+    return null;
+  }
+
   return (
     <>
       <Box
@@ -66,22 +89,30 @@ const IdShop = () => {
             alignItems: "center",
           }}
         >
-          <IconButton>
-            <RemoveIcon
-              onClick={() => {
-                if (count !== 0) {
-                  setCount(count - 1);
-                }
-              }}
-            />
+          <IconButton
+            onClick={() => {
+              dispatch(decreaseCount({ id }));
+            }}
+          >
+            <RemoveIcon />
           </IconButton>
-          <Typography>{count}</Typography>
-
-          <IconButton>
-            <AddIcon onClick={() => setCount((prev) => prev + 1)} />
+          <Typography>{product?.count ?? 0}</Typography>
+          <IconButton
+            onClick={() => {
+              dispatch(increaseCount({ id }));
+            }}
+          >
+            <AddIcon />
           </IconButton>
         </Box>
         <Button
+          onClick={() => {
+            if (product?.count) {
+              dispatch(removeProduct({ id }));
+            } else {
+              dispatch(addBasket({ image: img, id, price, title, count: 1 }));
+            }
+          }}
           variant="outlined"
           sx={{
             border: "1px solid #000",
@@ -92,7 +123,7 @@ const IdShop = () => {
             },
           }}
         >
-          add to cart
+          {product?.count ? "remove product" : "add to cart"}
         </Button>
       </Box>
       <Box
@@ -110,15 +141,12 @@ const IdShop = () => {
           <IconButton>
             <MailOutlineOutlinedIcon />
           </IconButton>
-
           <IconButton>
             <FacebookOutlinedIcon />
           </IconButton>
-
           <IconButton>
             <InstagramIcon />
           </IconButton>
-
           <IconButton>
             <TwitterIcon />
           </IconButton>

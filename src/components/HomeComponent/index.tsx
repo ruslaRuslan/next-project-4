@@ -89,7 +89,7 @@ const HomeComponent = () => {
       <Grid container spacing={4} justifyContent="center">
         {earrings.map(({ id, img, title, price }) => {
           return (
-            <Grid item xs={12} sm={6} md={4} lg={4}>
+            <Grid key={id} item xs={12} sm={6} md={4} lg={4}>
               <Box
                 key={id}
                 sx={{

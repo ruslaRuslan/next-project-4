@@ -47,6 +47,11 @@ export const navItems = [
         title: "My account",
         href: "/my-account",
     },
+    {
+        id: 9,
+        title: "Shopping cart",
+        href: "/shopping-cart",
+    },
 ];
 
 

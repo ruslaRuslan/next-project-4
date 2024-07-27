@@ -1,20 +1,19 @@
 "use client";
-import useClient from "@/hooks/useClient";
-import { useAppSelector } from "@/store/store";
-import { Box, CardMedia, Grid, Typography } from "@mui/material";
 import React from "react";
-
-const ShopingBagComponent = () => {
-  const basketState = useAppSelector((state) => state.basket);
+import { useAppSelector } from "@/store/store";
+import { Box, CardMedia, Container, Typography } from "@mui/material";
+import useClient from "@/hooks/useClient";
+const ShoppingCartComponent = () => {
   const isClient = useClient();
+  const basketState = useAppSelector((state) => state.basket);
 
   if (!isClient) {
     return null;
   }
 
   return (
-    <>
-      <Grid item lg={4}>
+    <Container>
+      <Box>
         {basketState.basketState?.map(({ image, id, title, price, count }) => {
           return (
             <Box
@@ -55,9 +54,9 @@ const ShopingBagComponent = () => {
             </Box>
           );
         })}
-      </Grid>
-    </>
+      </Box>
+    </Container>
   );
 };
 
-export default ShopingBagComponent;
+export default ShoppingCartComponent;

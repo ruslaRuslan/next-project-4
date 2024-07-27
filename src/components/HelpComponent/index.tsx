@@ -68,6 +68,74 @@ const HelpComponent = () => {
           </Box>
           <ArrowForwardIosOutlinedIcon />
         </Box>
+        <Divider
+          sx={{
+            border: "1px solid #D8D8D8",
+          }}
+        />
+        <Box
+          sx={{
+            marginTop: 5,
+            marginBottom: 8,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <CardMedia
+              sx={{
+                height: { lg: 60, md: 60, sm: 50, xs: 40 },
+                width: { lg: 60, md: 60, sm: 50, xs: 40 },
+              }}
+              component="img"
+              image="/images/padlock1.svg"
+              alt=""
+            />
+            <Typography
+              sx={{
+                fontSize: 20,
+              }}
+            >
+              Privacy Policy
+            </Typography>
+          </Box>
+          <ArrowForwardIosOutlinedIcon />
+        </Box>
+        <Divider
+          sx={{
+            border: "1px solid #D8D8D8",
+          }}
+        />
+        <Box
+          sx={{
+            marginTop: 5,
+            marginBottom: 8,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <CardMedia
+              sx={{
+                height: { lg: 60, md: 60, sm: 50, xs: 40 },
+                width: { lg: 60, md: 60, sm: 50, xs: 40 },
+              }}
+              component="img"
+              image="/images/return1.svg"
+              alt=""
+            />
+            <Typography
+              sx={{
+                fontSize: 20,
+              }}
+            >
+              Retun & Exchanges
+            </Typography>
+          </Box>
+          <ArrowForwardIosOutlinedIcon />
+        </Box>
       </Container>
     </>
   );

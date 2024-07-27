@@ -18,7 +18,7 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import { Badge, Container, Stack } from "@mui/material";
+import { Badge, Container } from "@mui/material";
 import Image from "next/image";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { navItems } from "../Data";
@@ -73,9 +73,20 @@ function DrawerAppBar(props: any) {
           >
             <p></p>
             <Box>
-              <IconButton>
-                <ShoppingCartOutlinedIcon />
-              </IconButton>
+              <Badge
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                badgeContent={length}
+                color="error"
+              >
+                <Link href="/shopping-cart">
+                  <IconButton color="inherit">
+                    <ShoppingCartOutlinedIcon />
+                  </IconButton>
+                </Link>
+              </Badge>
               <IconButton
                 onClick={() => setMobileOpen(false)}
                 sx={{
@@ -329,9 +340,11 @@ function DrawerAppBar(props: any) {
                     badgeContent={length}
                     color="error"
                   >
-                    <IconButton color="inherit">
-                      <ShoppingCartOutlinedIcon />
-                    </IconButton>
+                    <Link href="/shopping-cart">
+                      <IconButton color="inherit">
+                        <ShoppingCartOutlinedIcon />
+                      </IconButton>
+                    </Link>
                   </Badge>
                   <IconButton
                     color="inherit"

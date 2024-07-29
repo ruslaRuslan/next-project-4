@@ -9,10 +9,20 @@ export interface IBasketProduct {
     count: number;
     image: string;
 }
-
-const initialState = {
-    basketState: [] as Array<IBasketProduct>
+interface IBasket {
+    basketState: Array<IBasketProduct>,
+    totalSum: number
+}
+const initialState: IBasket = {
+    basketState: [],
+    totalSum: 0
 };
+
+function calculateTotalSum(arr: Array<IBasketProduct>) {
+    return arr.reduce((a, b) => {
+        return a + (b.price * b.count)
+    }, 0);
+}
 
 export const basketSlice = createSlice({
     name: "basket",
@@ -25,12 +35,14 @@ export const basketSlice = createSlice({
                 return;
             }
             state.basketState.push(action.payload)
+            state.totalSum = calculateTotalSum(state.basketState)
         },
         increaseCount: (state, action: PayloadAction<{ id: number }>) => {
             const item = state.basketState.find(el => el.id === action.payload.id);
             if (item) {
                 item.count += 1; // Direct mutation allowed by Immer
             }
+            state.totalSum = calculateTotalSum(state.basketState)
         },
         decreaseCount: (state, action: PayloadAction<{ id: number }>) => {
             const item = state.basketState.find(el => el.id === action.payload.id);
@@ -42,13 +54,22 @@ export const basketSlice = createSlice({
                     item.count -= 1;
                 }
             }
+            state.totalSum = calculateTotalSum(state.basketState)
         },
         removeProduct: (state, action: PayloadAction<{ id: number }>) => {
             const index = state.basketState.findIndex(el => el.id === action.payload.id);
             state.basketState.splice(index, 1)
-        }
+            state.totalSum = calculateTotalSum(state.basketState)
+        },
+        getTotalSum: (state) => {
+            const sum = state.basketState.reduce((a, b) => {
+                console.log(a)
+                return a + (b.price * b.count)
+            }, 0);
+            state.totalSum = sum;
+        },
     },
 });
 
-export const { addBasket, increaseCount, decreaseCount, removeProduct } = basketSlice.actions;
+export const { addBasket, increaseCount, decreaseCount, removeProduct, getTotalSum } = basketSlice.actions;
 export const basketReducer = basketSlice.reducer;

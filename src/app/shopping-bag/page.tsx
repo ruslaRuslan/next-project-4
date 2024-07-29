@@ -11,7 +11,7 @@ const ShopingBag = () => {
         }}
       >
         <Grid container>
-          <Grid item lg={8}>
+          <Grid item lg={7}>
             <Typography
               sx={{
                 marginTop: 3,

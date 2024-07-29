@@ -179,7 +179,7 @@ export default function FloatingButton() {
                       fontSize: 20,
                     }}
                   >
-                    Scarlet withch{" "}
+                    Scarlet withch
                   </Typography>
                   <Typography
                     sx={{

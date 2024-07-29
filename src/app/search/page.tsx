@@ -1,7 +1,15 @@
+import SearchComponent from "@/components/SearchComponent";
+import { Container } from "@mui/material";
 import React from "react";
 
-function Seatch() {
-  return <div>Seatch</div>;
+function Search() {
+  return (
+    <>
+      <Container>
+        <SearchComponent />
+      </Container>
+    </>
+  );
 }
 
-export default Seatch;
+export default Search;

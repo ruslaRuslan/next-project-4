@@ -264,7 +264,6 @@ function DrawerAppBar(props: any) {
 
                 <Typography
                   sx={{
-                    display: toggleDisplay(),
                     "@media screen and (max-width: 599px)": {
                       display: "none",
                     },
@@ -275,30 +274,10 @@ function DrawerAppBar(props: any) {
                 >
                   |
                 </Typography>
-                {isSearchOpen && (
-                  <TextField
-                    fullWidth
-                    label="Search"
-                    variant="filled"
-                    sx={{
-                      "@media screen and (max-width: 900px)": {
-                        display: "none",
-                      },
-                    }}
-                  />
-                )}
-                <IconButton
-                  onClick={handleSearchClick}
-                  sx={{
-                    "@media screen and (max-width: 599px)": {
-                      display: "none",
-                    },
-                    "@media screen and (max-width: 900px)": {
-                      display: "none",
-                    },
-                  }}
-                >
-                  <SearchIcon
+
+                <Link href="/search">
+                  <IconButton
+                    onClick={handleSearchClick}
                     sx={{
                       "@media screen and (max-width: 599px)": {
                         display: "none",
@@ -307,8 +286,20 @@ function DrawerAppBar(props: any) {
                         display: "none",
                       },
                     }}
-                  />
-                </IconButton>
+                  >
+                    {" "}
+                    <SearchIcon
+                      sx={{
+                        "@media screen and (max-width: 599px)": {
+                          display: "none",
+                        },
+                        "@media screen and (max-width: 900px)": {
+                          display: "none",
+                        },
+                      }}
+                    />
+                  </IconButton>
+                </Link>
 
                 {navItems.slice(7, 8).map(({ id, href }) => {
                   return (
@@ -392,21 +383,7 @@ function DrawerAppBar(props: any) {
             xl: "none",
           },
         }}
-      >
-        <TextField
-          sx={{
-            marginBottom: 4,
-          }}
-          fullWidth
-          label={
-            <>
-              <SearchIcon sx={{ marginRight: 1 }} />
-              Search
-            </>
-          }
-          variant="filled"
-        />
-      </Container>
+      ></Container>
     </>
   );
 }

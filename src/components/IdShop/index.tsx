@@ -31,7 +31,7 @@ const IdShop = ({ id, img, title, price, basket }: BasketItem) => {
   const [isClient, setIsClient] = useState(false);
 
   const product = useAppSelector((state) =>
-    state.basket.basketState.find((el) => el.id === id)
+    state.basket.basketState.find((element) => element.id === id)
   );
 
   useEffect(() => {

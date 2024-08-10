@@ -55,7 +55,7 @@ const ShopingCartComponent = () => {
           Shopping Cart
         </Typography>
         <Grid container spacing={4}>
-          <Grid item lg={6}>
+          <Grid item lg={7}>
             {basketState?.map(({ image, id, title, price, count }) => {
               return (
                 <Box key={id}>
@@ -89,6 +89,7 @@ const ShopingCartComponent = () => {
                       >
                         <Typography
                           sx={{
+                            width: { xs: 150 },
                             display: "flex",
                             flexDirection: {
                               xs: "column",
@@ -231,7 +232,7 @@ const ShopingCartComponent = () => {
             </Box>
           </Grid>
 
-          <Grid item lg={6} xs={12} sm={12}>
+          <Grid item lg={5} xs={12} sm={12}>
             <Typography sx={{ fontSize: 25, marginTop: 5 }}>
               Cart totals
             </Typography>

@@ -1,5 +1,5 @@
 "use client";
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { myAccountItems, navItems } from "../Data";
@@ -29,29 +29,31 @@ const MyAccountComponent = (props: any) => {
         My Account
       </Typography>
 
-      <Box>
+      <Grid container>
         {myAccountItems.map(({ id, href, title }) => (
-          <Link
-            key={id}
-            style={{
-              color: "#000",
-              textDecoration: "none",
-              textTransform: "none",
-              paddingLeft: "12px",
-              paddingRight: "12px",
-              borderBottom: isActive(href)
-                ? "1px solid #000"
-                : "1px solid transparent",
-              padding: "8px 16px",
-            }}
-            href={href}
-            onClick={() => handleNavItemClick(href)}
-            passHref
-          >
-            {title}
-          </Link>
+          <Grid item sm="auto" xs="auto">
+            <Link
+              key={id}
+              style={{
+                color: "#000",
+                textDecoration: "none",
+                textTransform: "none",
+                paddingLeft: "12px",
+                paddingRight: "12px",
+                borderBottom: isActive(href)
+                  ? "1px solid #000"
+                  : "1px solid transparent",
+                padding: "8px 16px",
+              }}
+              href={href}
+              onClick={() => handleNavItemClick(href)}
+              passHref
+            >
+              {title}
+            </Link>
+          </Grid>
         ))}
-      </Box>
+      </Grid>
     </>
   );
 };

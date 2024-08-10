@@ -2,7 +2,6 @@
 import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
 import { earrings } from "../Data";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const SearchComponent = () => {
